@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>jquery-validate.js-demo</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script src="js/jquery.validate.js"></script>
+</head>
+<body>
+		<form id="form">
+			<div class="form-group">
+				<label for="username">用户名：</label>
+				<input type="text" name="username" id="username" placeholder="请输入用户名" />
+			</div>
+			<div class="form-group">
+				<label for="number">手机号码：</label>
+				<input type="number" name="number" id="number" placeholder="请输入11位手机号码" />
+			</div>
+			<div class="form-group">
+				<label for="email">常用邮箱：</label>
+				<input type="email" name="email" id="email" placeholder="请输入您常用的邮箱" />
+			</div>
+			<div class="form-group">
+				<label for="password">设置密码：</label>
+				<input type="password" name="password" id="password" placeholder="请输入6-18位数字、字母或常用符号" />
+			</div>
+			<div class="form-group">
+				<label for="confirm-password">确认密码：</label>
+				<input type="password" name="confirm-password" id="confirm-password" placeholder="请再次输入密码" />
+			</div>
+			<div class="form-group">
+				<label for="url">博客地址：</label>
+				<input type="url" name="url" id="url" placeholder="请输入您的博客地址" />
+			</div>
+			<div class="form-group">
+				<label for="date">日期：</label>
+				<input type="date" name="date" id="date" placeholder="日期" />
+			</div>
+			<div class="form-group form-submit">
+				<button class="submit" type="submit">立即注册</button>
+			</div>
+		</form>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("#form").validate({
+					debug:true,      //调试模式（并不会提交）
+					
+					rules:{
+						username:{                
+							required:true,        //开启必填项
+							rangelength:[2,12]    //请输入的数值在2至12位之间
+						},
+						number:{
+							required:true
+						},
+						email:{
+							required:true
+						},
+						password:{
+							required:true,
+							rangelength:[6,12]
+						},
+						url:{
+							required:true
+						},
+						date:{
+
+						},
+						"confirm-password":{
+							equalTo:"#password"     //必须密码相同
+						}
+					},
+					
+					//自定义提示
+					messages:{
+						username:{
+							required:"用户名不能留空",      //用户名的必填项提示
+							rangelength:"请检查您输入的数值的长度是否在2至10之间"    //用户名的长度提示
+						},
+						password:{
+							rangelength:"账号或密码不正确，请重新输入"
+						}
+					}
+				});
+			});
+		</script>
+</body>
+</html>
